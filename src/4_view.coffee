@@ -25,11 +25,27 @@ class Sidebar
     constructor: (@el) ->
     
     render: ->
+        clocks = []
         for state in states
-            clock = new Clock(@el, state.offset, state.state)
-            $(@el).append clock.render()
-            
-bar = new Sidebar("#app")
-bar.render()
-# clock = new Clock("#app", -11, "American_Samoa")
-# clock.render()
+            clocks.push new Clock(@el, state.offset, state.state)
+        for clock in clocks
+            clock.render()
+
+class Main
+    constructor: (@el) ->
+    
+    render: ->
+        sidebar = new Sidebar("#clocks-many")
+        main_clocks = [
+            new Clock("#clocks-main", 8, "Manila")
+            new Clock("#clocks-main", -5, "Eastern")
+            new Clock("#clocks-main", -6, "Central")
+            new Clock("#clocks-main", -7, "Mountain")
+            new Clock("#clocks-main", -8, "Pacific")
+            ]
+        $(@el).html template.main()
+        for clock in main_clocks
+            clock.render()
+        sidebar.render()
+
+

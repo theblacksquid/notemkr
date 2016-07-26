@@ -31,10 +31,10 @@ states = [
     {state: "Nevada"; offset: -7; tz: "MST"}
     {state: "New_Hampshire"; offset: -5; tz: "EST"}
     {state: "New_Jersey"; offset: -5; tz: "EST"}
-    {state: "New Mexico"; offset: -7; tz: "MST"}
+    {state: "New_Mexico"; offset: -7; tz: "MST"}
     {state: "New_York"; offset: -5; tz: "EST"}
     {state: "North_Carolina"; offset: -5; tz: "EST"}
-    {state: "North Dakota"; offset: -6; tz: "CST"}
+    {state: "North_Dakota"; offset: -6; tz: "CST"}
     {state: "Ohio"; offset: -5; tz: "EST"}
     {state: "Oklahoma"; offset: -6; tz: "EST"}
     {state: "Oregon"; offset: -7; tz: "MST"}
