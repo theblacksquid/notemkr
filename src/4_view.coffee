@@ -30,11 +30,18 @@ class Sidebar
             clocks.push new Clock(@el, state.offset, state.state)
         for clock in clocks
             clock.render()
-
+            
 class Main
     constructor: (@el) ->
     
     render: ->
+        $(@el).html template.callInfo()        
+
+class App
+    constructor: (@el) ->
+    
+    render: ->
+        main = new Main("#main")
         sidebar = new Sidebar("#clocks-many")
         main_clocks = [
             new Clock("#clocks-main", 8, "Manila")
@@ -47,5 +54,5 @@ class Main
         for clock in main_clocks
             clock.render()
         sidebar.render()
-
+        main.render()
 

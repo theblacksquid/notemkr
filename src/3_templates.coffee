@@ -30,8 +30,14 @@ template.clock = (title) ->
     </div>
     """
     
-template.cxInfo = ->
+template.callInfo = ->
     """
+    <div class='w3-container'>
+        <input type='text' id='bttr' placeholder='BTTR'>
+        <input type='text' id='ptr_id' placeholder='PTR/OKB ID'>
+        <input type='text' id='svc_tag' placeholder='Service Tag'> <br />
+        Dispatch Case? <input type='checkbox' id='dps_case'>
+    </div>
     """
 
 template.notes = ->

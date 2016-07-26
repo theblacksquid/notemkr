@@ -1,5 +1,5 @@
 
 
-app = new Main("#app")
+app = new App("#app")
 app.render()
 
