@@ -1,0 +1,57 @@
+states = [
+    {state: "Alabama"; offset: -5; tz: "EST"}
+    {state: "Alaska"; offset: -9; tz: "AKST"}
+    {state: "American_Samoa"; offset: -11; tz: "SST"}
+    {state: "Arizona"; offset: -7; tz: "MST"}
+    {state: "Arkansas"; offset: -6; tz: "CST"}
+    {state: "California"; offset: -8; tz: "PST"}
+    {state: "Colorado"; offset: -7; tz: "MST"}
+    {state: "Connecticut"; offset: -5; tz: "EST"}
+    {state: "Delaware"; offset: -5; tz: "EST"}
+    {state: "Florida"; offset: -5; tz: "EST"}
+    {state: "Georgia"; offset: -5; tz: "EST"}
+    {state: "Guam"; offset: 10; tz: "CHST"}
+    {state: "Hawaii"; offset: -10; tz: "HIST"}
+    {state: "Idaho"; offset: -7; tz: "MST"}
+    {state: "Illinois"; offset: -6; tz: "CST"}
+    {state: "Indiana"; offset: -5; tz: "EST"}
+    {state: "Iowa"; offset: -6; tz: "CST"}
+    {state: "Kansas"; offset: -6; tz: "CST"}
+    {state: "Kentucky"; offset: -5; tz: "EST"}
+    {state: "Louisiana"; offset: -6; tz: "CST"}
+    {state: "Maine"; offset: -5; tz: "EST"}
+    {state: "Maryland"; offset: -5; tz: "EST"}
+    {state: "Massachusetts"; offset: -5; tz: "EST"}
+    {state: "Michigan"; offset: -5; tz: "EST"}
+    {state: "Minnesota"; offset: -5; tz: "CST"}
+    {state: "Mississippi"; offset: -6; tz: "CST"}
+    {state: "Missouri"; offset: -6; tz: "CST"}
+    {state: "Montana"; offset: -7; tz: "MST"}
+    {state: "Nebraska"; offset: -6; tz: "CST"}
+    {state: "Nevada"; offset: -7; tz: "MST"}
+    {state: "New_Hampshire"; offset: -5; tz: "EST"}
+    {state: "New_Jersey"; offset: -5; tz: "EST"}
+    {state: "New Mexico"; offset: -7; tz: "MST"}
+    {state: "New_York"; offset: -5; tz: "EST"}
+    {state: "North_Carolina"; offset: -5; tz: "EST"}
+    {state: "North Dakota"; offset: -6; tz: "CST"}
+    {state: "Ohio"; offset: -5; tz: "EST"}
+    {state: "Oklahoma"; offset: -6; tz: "EST"}
+    {state: "Oregon"; offset: -7; tz: "MST"}
+    {state: "Pennsylvania"; offset: -5; tz: "EST"}
+    {state: "Puerto_Rico"; offset: -4; tz: "AST"}
+    {state: "Rhode_Island"; offset: -5; tz: "EST"}
+    {state: "South_Carolina"; offset: -5; tz: "EST"}
+    {state: "South_Dakota"; offset: -6; tz: "CST"}
+    {state: "Tennessee"; offset: -5; tz: "EST"}
+    {state: "Texas"; offset: -6; tz: "CST"}
+    {state: "Utah"; offset: -7; tz: "MST"}
+    {state: "Vermont"; offset: -5; tz: "EST"}
+    {state: "Virginia"; offset: -5; tz: "EST"}
+    {state: "US_Virgin_Islands"; offset: -4; tz: "AST"}
+    {state: "Washington"; offset: -8; tz: "PST"}
+    {state: "Washington_DC"; offset: -5; tz: "EST"}
+    {state: "West_Virginia"; offset: -5; tz: "EST"}
+    {state: "Wisconsin"; offset: -6; tz: "CST"}
+    {state: "Wyoming"; offset: -7; tz: "MST"}
+]
