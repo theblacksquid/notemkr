@@ -35,12 +35,14 @@ class Main
     constructor: (@el) ->
     
     render: ->
+        $("#header").append template.menu()
         $(@el).append template.callInfo()   
         $(@el).append template.cxInfo()
         $(@el).append template.notes()
-        $(@el).append template.diagResults()
         $(@el).append template.conclusions()
+        $(@el).append template.diagResults()
         $(@el).append template.dispatchNotes()
+        $(@el).append template.buttons()
         @checkEnable("#va_done","#va_rad1")
         @checkEnable("#va_done","#va_rad2")
         @checkEnable("#warranty","#warranty_rad1")
@@ -52,6 +54,7 @@ class Main
         @checkEnable("#resolved","#reso_rad1")
         @checkEnable("#resolved","#reso_rad2")
         @checkEnable("#tat", "#tat_val")
+        @checkEnable("#adv_data_loss", "#adv_data_loss_val")
     
     checkEnable: (elem, target) ->
         $(elem).change(->

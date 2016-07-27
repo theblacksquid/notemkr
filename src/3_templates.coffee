@@ -1,13 +1,26 @@
 main_sz = 'w3-rest'
 side_col = 'w3-quarter'
+field_style = "style='width:32%;'"
 
 template = {}
 
+template.menu = ->
+    """
+    <div class='w3-container w3-border #{main_sz} w3-btn-bar w3-show-inline-block' style='display:inline-block'>
+        <button class='w3-btn w3-ripple' id='new_note'>New</button>
+        <button class='w3-btn w3-ripple' id='save_note'>Save</button>
+        <button class='w3-btn w3-ripple' id='view_all_notes'>View Notes</button>
+        <button class='w3-btn w3-ripple' id='more_options'>More</button>
+    </div>
+    """
+
 template.main = ->
     """
-    <div id='header' class='w3-container w3-row' style='background-color: steelblue'>
+    <div id='header' class='w3-container w3-row' style='background-color:steelblue;'>
       <!---  <div class='w3-container'><img src='img/dell_icon.png.ico'></div> --->
-        <div class='w3-container'><h2>NOTEMKR</h2></div>
+       <!--- <div class='w3-container' style='display:inline-block'>
+            <h2>NOTEMKR</h2>
+        </div> --->
     </div>
     <div class='w3-container w3-row' style='background-color: steelblue'>
         <div id='sidebar' class='w3-container #{side_col}' style='font-size: xx-small; font-weight: bold'>
@@ -34,9 +47,9 @@ template.clock = (title) ->
 template.callInfo = ->
     """
     <div class='w3-container w3-border #{main_sz}'>
-        <input type='text' id='bttr' placeholder='BTTR'>
-        <input type='text' id='ptr_id' placeholder='PTR/OKB ID'>
-        <input type='text' id='svc_tag' placeholder='Service Tag'> <br />
+        <input type='text' id='bttr' placeholder='BTTR' #{field_style}>
+        <input type='text' id='ptr_id' placeholder='PTR/OKB ID' #{field_style}>
+        <input type='text' id='svc_tag' placeholder='Service Tag' #{field_style}> <br />
         <input type='checkbox' id='dps_case'> Dispatch Case? 
     </div>
     """
@@ -44,11 +57,11 @@ template.callInfo = ->
 template.cxInfo = ->
     """
     <div class='w3-container w3-border #{main_sz}'>
-        <input type='text' id='caller_name' placeholder='Caller&#39;s Name'>
-        <input type='text' id='ppn' placeholder='Primary Phone #'> 
-        <input type='text' id='apn' placeholder='Alternate Phone #'> 
+        <input type='text' id='caller_name' placeholder='Caller&#39;s Name' #{field_style}>
+        <input type='text' id='ppn' placeholder='Primary Phone #' #{field_style}> 
+        <input type='text' id='apn' placeholder='Alternate Phone #' #{field_style}> 
         <br />
-        <input type='text' id='email' placeholder='Email Address'>
+        <input type='text' id='email' placeholder='Email Address' #{field_style}>
         <br />
         <input type='checkbox' id='va_done'> Service Authorization
         <input type='radio' id='va_rad1' name='va_result' value='Passed' disabled> Passed
@@ -128,6 +141,13 @@ template.conclusions = ->
 template.dispatchNotes = ->
     """
     <div class='w3-container w3-border #{main_sz}'>
+        <input type='checkbox' id='adv_data_loss'> Reminded cx of possible Data loss when unit is sent in for repairs or when OSRI/Reset is done?
+        <br />
+        <select id='adv_data_loss_val' disabled>
+            <option value='yes'>Cx agrees to reimage drive</option>
+            <option value='no'>Cx doesn&#39;t agree to reimage drive</option>
+        </select>
+        <br />
         <input type='checkbox' id='auto_selector_used'> Auto Parts Selector Used?
         <input type='checkbox' id='vdi'> Verify Dispatch Information? <br />
         <input type='checkbox' id='tat'> Turn Around Time
@@ -142,3 +162,20 @@ template.dispatchNotes = ->
     </div>
     """
 
+template.buttons = ->
+    """
+    <div class='w3-container w3-border #{main_sz}'>
+        <div class='w3-container'>
+            <button class='w3-btn-block w3-border w3-ripple' id='agent_desc_btn'>Agent Description</button>
+        </div>
+        <div class='w3-container'>
+            <button class='w3-btn-block w3-border w3-ripple' id='symptoms_btn'>Symptoms</button>
+        </div>
+        <div class='w3-container'>
+            <button class='w3-btn-block w3-border w3-ripple' id='ts_steps_btn'>Create Notes</button>
+        </div>
+        <div class='w3-container'>
+            <button class='w3-btn-block w3-border w3-ripple' id='conclusions_btn'>Conclusions/5 GL</button>
+        </div>
+    </div>
+    """
