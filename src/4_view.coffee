@@ -39,11 +39,17 @@ class Main
         $(@el).append template.cxInfo()
         $(@el).append template.notes()
         $(@el).append template.diagResults()
+        $(@el).append template.conclusions()
         @checkEnable("#va_done","#va_rad1")
         @checkEnable("#va_done","#va_rad2")
         @checkEnable("#warranty","#warranty_rad1")
         @checkEnable("#warranty","#warranty_rad2")
         @checkEnable("#toade","#toade_date")
+        @checkEnable("#heatcheck","#hc_rad1")
+        @checkEnable("#heatcheck","#hc_rad2")
+        @checkEnable("#heatcheck","#hc_rad2")
+        @checkEnable("#resolved","#reso_rad1")
+        @checkEnable("#resolved","#reso_rad2")
     
     checkEnable: (elem, target) ->
         $(elem).change(->
