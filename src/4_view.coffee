@@ -35,7 +35,24 @@ class Main
     constructor: (@el) ->
     
     render: ->
-        $(@el).html template.callInfo()        
+        $(@el).append template.callInfo()   
+        $(@el).append template.cxInfo()
+        $(@el).append template.notes()
+        $(@el).append template.diagResults()
+        @checkEnable("#va_done","#va_rad1")
+        @checkEnable("#va_done","#va_rad2")
+        @checkEnable("#warranty","#warranty_rad1")
+        @checkEnable("#warranty","#warranty_rad2")
+        @checkEnable("#toade","#toade_date")
+    
+    checkEnable: (elem, target) ->
+        $(elem).change(->
+            if $(elem).prop('checked') is true
+                $(target).prop('disabled', false)
+            else
+                $(target).prop('disabled', true)
+            )
+            
 
 class App
     constructor: (@el) ->
