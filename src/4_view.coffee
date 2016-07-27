@@ -40,6 +40,7 @@ class Main
         $(@el).append template.notes()
         $(@el).append template.diagResults()
         $(@el).append template.conclusions()
+        $(@el).append template.dispatchNotes()
         @checkEnable("#va_done","#va_rad1")
         @checkEnable("#va_done","#va_rad2")
         @checkEnable("#warranty","#warranty_rad1")
@@ -50,6 +51,7 @@ class Main
         @checkEnable("#heatcheck","#hc_rad2")
         @checkEnable("#resolved","#reso_rad1")
         @checkEnable("#resolved","#reso_rad2")
+        @checkEnable("#tat", "#tat_val")
     
     checkEnable: (elem, target) ->
         $(elem).change(->

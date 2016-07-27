@@ -5,23 +5,21 @@ template = {}
 
 template.main = ->
     """
-    <div id='container' class='w3-container' style='background-color: steelblue'>
-        <div id='header' class='w3-container w3-row'>
-          <!---  <div class='w3-container'><img src='img/dell_icon.png.ico'></div> --->
-            <div class='w3-container'><h2>NOTEMKR</h2></div>
-        </div>
-        <div class='w3-container w3-row'>
-            <div id='sidebar' class='w3-container #{side_col}' style='font-size: xx-small; font-weight: bold'>
-                <div class='w3-container'></div>
-                <div id='clocks-main' class='w3-container' style='height: 50vh; overflow: auto'></div>
-                <div class='w3-border w3-center'>
-                ----------
-                </div>
-                <div id='clocks-many' class='w3-container' style='height: 40vh; overflow: auto'></div>
+    <div id='header' class='w3-container w3-row' style='background-color: steelblue'>
+      <!---  <div class='w3-container'><img src='img/dell_icon.png.ico'></div> --->
+        <div class='w3-container'><h2>NOTEMKR</h2></div>
+    </div>
+    <div class='w3-container w3-row' style='background-color: steelblue'>
+        <div id='sidebar' class='w3-container #{side_col}' style='font-size: xx-small; font-weight: bold'>
+            <div class='w3-container'></div>
+            <div id='clocks-main' class='w3-container' style='height: 50vh; overflow: auto'></div>
+            <div class='w3-border w3-center'>
+            ----------
             </div>
-            
-            <div id='main' class='w3-container w3-text-white' style='font-size:small;height:90vh;overflow:auto'></div>
+            <div id='clocks-many' class='w3-container' style='height: 40vh; overflow: auto'></div>
         </div>
+        
+        <div id='main' class='w3-container w3-text-white' style='font-size:small;height:90vh;overflow:auto'></div>
     </div>
     """
 
@@ -124,6 +122,23 @@ template.conclusions = ->
         <br />
             <input type='radio' name='issue_resolved' id='reso_rad1' disabled/> Resolved
             <input type='radio' name='issue_resolved' id='reso_rad2' disabled/> Unresolved/Dispatch
+    </div>
+    """
+
+template.dispatchNotes = ->
+    """
+    <div class='w3-container w3-border #{main_sz}'>
+        <input type='checkbox' id='auto_selector_used'> Auto Parts Selector Used?
+        <input type='checkbox' id='vdi'> Verify Dispatch Information? <br />
+        <input type='checkbox' id='tat'> Turn Around Time
+        <select id='tat_val' disabled>
+            <option value='1-2bd'>1 - 2 bd</option>
+            <option value='5-7bd'>5 - 7 bd</option>
+            <option value='7-10bd'>7 - 10 bd</option>
+            <option value='10-15bd'>10 - 15 bd</option>
+        </select> <br />
+        <input type='checkbox' id='tarp'> Told About Return policy?
+        <input type='checkbox' id='cidar'> CIDAR Explained?
     </div>
     """
 
