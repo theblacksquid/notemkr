@@ -29,4 +29,20 @@ render_time = (time_offset) ->
         year : current_time.getFullYear()
     }
 
+extract_values = (id_list) ->
+    result = {}
+    for id in id_list
+        target = '#'+id
+        if $(target).is('input:text') or $(target).is('textarea')
+            result[id] = $(target).val()
+        if $(target).is('input:checkbox')
+            result[id] = $(target).prop('checked')
+        if $(target).is("input[type='radio']:checked")
+            result[id] = $(target).val()
+    result
 
+getType = (obj) ->
+    if obj is null
+        '[object Null]'
+    else 
+        Object.prototype.toString.call(obj)

@@ -1,12 +1,13 @@
 main_sz = 'w3-rest'
 side_col = 'w3-quarter'
 field_style = "style='width:32%;'"
+menu_style = "style='display:inline-block;background-color:transparent'"
 
 template = {}
 
 template.menu = ->
     """
-    <div class='w3-container #{main_sz} w3-btn-bar w3-show-inline-block w3-text-white' style='display:inline-block;background-color:transparent'>
+    <div class='w3-container #{main_sz} w3-btn-bar w3-show-inline-block w3-text-white' #{menu_style}>
         <button class='w3-btn w3-ripple' id='new_note'>New</button>
         <button class='w3-btn w3-ripple' id='save_note'>Save</button>
         <button class='w3-btn w3-ripple' id='view_all_notes'>View Notes</button>

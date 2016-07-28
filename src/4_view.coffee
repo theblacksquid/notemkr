@@ -68,6 +68,12 @@ class App
     constructor: (@el) ->
     
     render: ->
+        all_ids = template.callInfo.ids.concat(
+            template.cxInfo.ids
+            template.notes.ids
+            template.diagResults.ids
+            template.conclusions.ids
+            )
         main = new Main("#main")
         sidebar = new Sidebar("#clocks-many")
         main_clocks = [
@@ -82,4 +88,18 @@ class App
             clock.render()
         sidebar.render()
         main.render()
+        @getValues(template.conclusions, "#conclusions_btn")
+        @getValues(all_ids, '#ts_steps_btn')
+    
+    getValues: (section, button) ->
+        $(button).click(->
+            console.log extract_values((->
+                if getType(section) is '[object Function]'
+                    section.ids
+                else if getType(section) is '[object Array]'
+                    section
+                )())
+            console.log getType(section)
+            )
+    
 
