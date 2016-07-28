@@ -30,7 +30,7 @@ class Sidebar
             clocks.push new Clock(@el, state.offset, state.state)
         for clock in clocks
             clock.render()
-            
+  
 class Main
     constructor: (@el) ->
     
@@ -63,7 +63,6 @@ class Main
             else
                 $(target).prop('disabled', true)
             )
-            
 
 class App
     constructor: (@el) ->

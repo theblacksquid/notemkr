@@ -6,13 +6,20 @@ template = {}
 
 template.menu = ->
     """
-    <div class='w3-container w3-border #{main_sz} w3-btn-bar w3-show-inline-block' style='display:inline-block'>
+    <div class='w3-container #{main_sz} w3-btn-bar w3-show-inline-block w3-text-white' style='display:inline-block;background-color:transparent'>
         <button class='w3-btn w3-ripple' id='new_note'>New</button>
         <button class='w3-btn w3-ripple' id='save_note'>Save</button>
         <button class='w3-btn w3-ripple' id='view_all_notes'>View Notes</button>
         <button class='w3-btn w3-ripple' id='more_options'>More</button>
     </div>
     """
+    
+template.menu.ids = [
+    'new_note'
+    'save_note'
+    'view_all_notes'
+    'more_options'
+    ]
 
 template.main = ->
     """
@@ -53,6 +60,12 @@ template.callInfo = ->
         <input type='checkbox' id='dps_case'> Dispatch Case? 
     </div>
     """
+template.callInfo.ids = [
+    'bttr'
+    'ptr_id'
+    'svc_tag'
+    'dps_case'
+    ]
 
 template.cxInfo = ->
     """
@@ -75,6 +88,22 @@ template.cxInfo = ->
         <input type='radio' id='warranty_rad2' name='warrany_type' value='Mail-In' disabled> Mail-In
     </div>
     """
+template.cxInfo.ids = [
+    'caller_name'
+    'ppn'
+    'apn'
+    'email'
+    'va_done'
+    'va_result'
+    'va_rad1'
+    'va_rad2'
+    'toade'
+    'toade_date'
+    'warranty'
+    'warranty_type'
+    'warranty_rad1'
+    'warranty_rad2'
+    ]
 
 template.notes = ->
     """
@@ -91,6 +120,12 @@ template.notes = ->
         <textarea id='ts_steps' placeholder='Describe what happened on the call.' style='width:100%;height:200px;resize:none' />
     </div>
     """
+
+template.notes.ids = [
+    'agent_desc'
+    'symptoms'
+    'ts_steps'
+    ]
 
 template.diagResults = ->
     input_w = '28vw'
@@ -117,6 +152,15 @@ template.diagResults = ->
         </div>
     </div>
     """
+
+template.diagResults.ids = [
+    'diag_tool'
+    'diag_result'
+    'err_code'
+    'valid_code'
+    'dc_id'
+    'tag_team_id'
+    ]
     
 template.conclusions = ->
     """
@@ -137,6 +181,17 @@ template.conclusions = ->
             <input type='radio' name='issue_resolved' id='reso_rad2' disabled/> Unresolved/Dispatch
     </div>
     """
+
+template.conclusions.ids = [
+    'conclusions'
+    'heatcheck'
+    'hc_rad1'
+    'hc_rad2'
+    'dsat_reason'
+    'resolved'
+    'reso_rad1'
+    'reso_rad2'
+    ]
 
 template.dispatchNotes = ->
     """
@@ -161,6 +216,17 @@ template.dispatchNotes = ->
         <input type='checkbox' id='cidar'> CIDAR Explained?
     </div>
     """
+    
+template.dispatchNotes.ids = [
+    'adv_data_loss'
+    'adv_data_loss_val'
+    'auto_selector_used'
+    'vdi'
+    'tat'
+    'tat_val'
+    'tarp'
+    'cidar'
+    ]
 
 template.buttons = ->
     """
@@ -179,3 +245,9 @@ template.buttons = ->
         </div>
     </div>
     """
+template.buttons.ids = [
+    'agent_desc_btn'
+    'symptoms_btn'
+    'ts_steps_btn'
+    'conclusions_btn'
+    ]
