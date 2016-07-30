@@ -11,9 +11,6 @@ class Clock
     tick: ->
         x = render_time(@timezone)
         self = @
-        days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
-        months = ["Jan","Feb","Mar","Apr","May","Jun",
-                  "Jul","Aug","Sep","Oct","Nov","Dec"]
         $("##{@title}-clock").html (
             "<p>#{days[x.day]}, #{catZero(x.hours)}:#{catZero(x.minutes)}:
             #{catZero(x.seconds)} #{x.diem}, <br /> 
@@ -88,18 +85,28 @@ class App
             clock.render()
         sidebar.render()
         main.render()
-        @getValues(template.conclusions, "#conclusions_btn")
+        @getField('#conclusions', "#conclusions_btn")
         @getValues(all_ids, '#ts_steps_btn')
+        @getField('#agent_desc', '#agent_desc_btn')
+        @getField('#symptoms', '#symptoms_btn')
     
     getValues: (section, button) ->
         $(button).click(->
-            console.log extract_values((->
+            result = extract_values((->
                 if getType(section) is '[object Function]'
                     section.ids
                 else if getType(section) is '[object Array]'
                     section
                 )())
-            console.log getType(section)
+            
+            clipboard.copy(template.note(result))
+            console.log result
+            console.log template.note(result)
+            )
+    getField: (field, button) ->
+        $(button).click(->
+            $(field).select()
+            document.execCommand('copy')
             )
     
 

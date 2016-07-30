@@ -1,3 +1,4 @@
+
 main_sz = 'w3-rest'
 side_col = 'w3-quarter'
 field_style = "style='width:32%;'"
@@ -77,7 +78,7 @@ template.cxInfo = ->
         <br />
         <input type='text' id='email' placeholder='Email Address' #{field_style}>
         <br />
-        <input type='checkbox' id='va_done'> Service Authorization
+        <input type='checkbox' id='va_done'> Verify Authorization
         <input type='radio' id='va_rad1' name='va_result' value='Passed' disabled> Passed
         <input type='radio' id='va_rad2' name='va_result' value='Failed' disabled> Failed
         <br />
@@ -171,15 +172,15 @@ template.conclusions = ->
         <br />
         <input type='checkbox' id='heatcheck'> Did heatcheck with cx?
         <br />
-            <input type='radio' name='cx_sat' id='hc_rad1' disabled> Cx is Satisfied
-            <input type='radio' name='cx_sat' id='hc_rad2' disabled> Cx is Dissatisfied
+            <input type='radio' name='cx_sat' id='hc_rad1' value='Cx is Satisfied' disabled> Cx is Satisfied
+            <input type='radio' name='cx_sat' id='hc_rad2' value='Cx is Dissatisfied' disabled> Cx is Dissatisfied
         <br />
         <textarea id='dsat_reason' placeholder='If cx is DSAT, explain why:' style='width:100%;height:75px;resize:none'/>
         <br />
         <input type='checkbox' id='resolved' /> Is issue resolved?
         <br />
-            <input type='radio' name='issue_resolved' id='reso_rad1' disabled/> Resolved
-            <input type='radio' name='issue_resolved' id='reso_rad2' disabled/> Unresolved/Dispatch
+            <input type='radio' name='issue_resolved' id='reso_rad1' value='Resolved' disabled/> Resolved
+            <input type='radio' name='issue_resolved' id='reso_rad2' value='Unresolved/Dispatch' disabled/> Unresolved/Dispatch
     </div>
     """
 
@@ -252,3 +253,65 @@ template.buttons.ids = [
     'ts_steps_btn'
     'conclusions_btn'
     ]
+    
+template.note = (input) ->
+    time = render_time(8)
+    """
+    BTTR: #{input.bttr} \r
+    PTR/KCS/OKB ID: #{input.ptr_id} \r
+    Service Tag: #{input.svc_tag} \r
+    ----- \r
+    PPN: #{isBlank(input.ppn)} \r
+    APN: #{isBlank(input.apn)} \r
+    Email: #{isBlank(input.email)} \r
+    VA Passed: #{checkboxHandler(input.va_done, input.va_rad1, input.va_rad2)} \r
+    TOADE: #{(-> 
+    if input.toade is true
+        input.toade_date
+    else 'n/a'
+    )()} \r
+    Entitlement: #{checkboxHandler(input.warranty, input.warranty_rad1, input.warranty_rad2)} \r
+    ----- \r
+    Agent Description: #{input.agent_desc} \r
+    ----- \r
+    Symptoms: #{input.symptoms} \r
+    ----- \r
+    T/S Steps: \r
+    \r
+    #{input.ts_steps}\r
+    -----\r
+    Conclusions: #{input.conclusions} \r
+    Heatcheck: #{checkboxHandler(input.heatcheck, input.hc_rad1, input.hc_rad2)} \r
+    DSAT Reason: #{isBlank(input.dsat_reason)} \r
+    Issue Resolved?: #{checkboxHandler(input.resolved, input.reso_rad1, input.reso_rad2)} \r
+    ----- \r
+    Diagnostics Used: #{(-> 
+    if isBlank(input.diag_tool) is 'no'
+        'N/A'
+    else input.diag_tool
+    )()}\r
+    Result: #{input.diag_result} \r
+    Error Code: #{isBlank(input.err_code)} \r
+    Validation Code: #{isBlank(input.valid_code)} \r
+    Dell Connect: #{isBlank(input.dc_id)} \r
+    Tag Team Chat: #{isBlank(input.tag_team_id)} \r
+    -----\r
+    Educated Possible Data Loss: #{(->
+    if input.adv_data_loss is true
+        input.adv_data_loss_val
+    else 'N/A'
+    )()} \r
+    Auto Parts Selector Used?: #{isChecked(input.auto_selector_used)} \r
+    Verified Dispatch Info?: #{isChecked(input.vdi)} \r
+    Turn Around Time: #{(->
+    if input.tat is true
+        input.tat_val
+    else 'N/A'
+    )()} \r
+    Told About Return Policy: #{isChecked(input.tarp)}\r
+    CIDAR Explained?: #{isChecked(input.cidar)}\r
+    \r
+    Note Generated on #{days[time.day]}, #{months[time.month]} #{time.date} #{time.year}, #{catZero(time.hours)}:#{catZero(time.minutes)}:#{catZero(time.seconds)} #{time.diem}, Manila
+    """
+
+

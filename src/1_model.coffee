@@ -39,6 +39,8 @@ extract_values = (id_list) ->
             result[id] = $(target).prop('checked')
         if $(target).is("input[type='radio']:checked")
             result[id] = $(target).val()
+        if $(target).is('select')
+            result[id] = $(target+' option:selected').text()
     result
 
 getType = (obj) ->
@@ -46,3 +48,24 @@ getType = (obj) ->
         '[object Null]'
     else 
         Object.prototype.toString.call(obj)
+        
+isBlank = (obj) ->
+    if obj is ''
+        'N/A'
+    else 'yes'
+    
+checkboxHandler = (checkbox, rad1, rad2) ->
+    if checkbox is true
+        rad1 or rad2
+    else 'n/a'
+
+isChecked = (input) ->
+    if input is true
+        'Yes'
+    else 'No'
+
+days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+
+months = ["Jan","Feb","Mar","Apr","May","Jun",
+          "Jul","Aug","Sep","Oct","Nov","Dec"]
+
