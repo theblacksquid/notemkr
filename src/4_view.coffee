@@ -70,6 +70,7 @@ class App
             template.notes.ids
             template.diagResults.ids
             template.conclusions.ids
+            template.dispatchNotes.ids
             )
         main = new Main("#main")
         sidebar = new Sidebar("#clocks-many")
