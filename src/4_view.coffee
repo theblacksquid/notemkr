@@ -90,6 +90,8 @@ class App
         @getValues(all_ids, '#ts_steps_btn')
         @getField('#agent_desc', '#agent_desc_btn')
         @getField('#symptoms', '#symptoms_btn')
+        @saveNote(all_ids)
+        @newNote(all_ids)
     
     getValues: (section, button) ->
         $(button).click(->
@@ -104,10 +106,31 @@ class App
             console.log result
             console.log template.note(result)
             )
+            
     getField: (field, button) ->
         $(button).click(->
             $(field).select()
             document.execCommand('copy')
             )
     
-
+    saveNote: (input) ->
+        $('#save_note').click(->
+            time = render_time(0)
+            toSave = extract_values(input)
+            if toSave.svc_tag isnt ''
+                localforage.setItem(
+                    toSave.svc_tag
+                    toSave,
+                    (->
+                        alert("Note Saved")
+                        console.log(toSave)
+                        )
+                    )
+            else 
+                alert('No Service Tag Detected')
+            )
+    
+    newNote: (toClear) ->
+        $('#new_note').click(->
+            clear_values(toClear)
+            )

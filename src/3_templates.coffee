@@ -201,6 +201,7 @@ template.dispatchNotes = ->
         <input type='checkbox' id='adv_data_loss'> Reminded cx of possible Data loss when unit is sent in for repairs or when OSRI/Reset is done?
         <br />
         <select id='adv_data_loss_val' disabled>
+            <option value='n/a'>--SELECT--</option>
             <option value='yes'>Cx agrees to reimage drive</option>
             <option value='no'>Cx doesn&#39;t agree to reimage drive</option>
         </select>
@@ -209,6 +210,7 @@ template.dispatchNotes = ->
         <input type='checkbox' id='vdi'> Verify Dispatch Information? <br />
         <input type='checkbox' id='tat'> Turn Around Time
         <select id='tat_val' disabled>
+            <option value='n/a'>--SELECT--</option>
             <option value='1-2bd'>1 - 2 bd</option>
             <option value='5-7bd'>5 - 7 bd</option>
             <option value='7-10bd'>7 - 10 bd</option>

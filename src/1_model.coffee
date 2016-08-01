@@ -43,6 +43,18 @@ extract_values = (id_list) ->
             result[id] = $(target+' option:selected').text()
     result
 
+clear_values = (id_list) ->
+    for id in id_list
+        target = '#'+id
+        if $(target).is('input:text') or $(target).is('textarea')
+            $(target).val('')
+        if $(target).is('input:checkbox')
+            $(target).prop('checked', false)
+        if $(target).is("input[type='radio']:checked")
+            $(target).prop('checked', false)
+        if $(target).is('select')
+            $(target).prop('selectedIndex', 0)
+
 getType = (obj) ->
     if obj is null
         '[object Null]'
@@ -68,4 +80,6 @@ days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
 
 months = ["Jan","Feb","Mar","Apr","May","Jun",
           "Jul","Aug","Sep","Oct","Nov","Dec"]
+
+
 
