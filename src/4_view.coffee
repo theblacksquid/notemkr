@@ -32,7 +32,7 @@ class Main
     constructor: (@el) ->
     
     render: ->
-        $("#header").append template.menu()
+        $("#header").html template.menu()
         $(@el).append template.callInfo()   
         $(@el).append template.cxInfo()
         $(@el).append template.notes()
@@ -66,24 +66,29 @@ class SavedNotes
     
     template: ->
         """
-        <div id='saved_notes'></div>
+        <div id='saved_notes' style='height:90vh;overflow:auto'></div>
         """
     
     render: ->
         $(@el).html @template()
-        items = []
-        values = []
         localforage.keys((err, keys) ->
             for key in keys
-                items.push key
+                localforage.getItem(key, ((err, value) ->
+                    $('#saved_notes').append template.savedNote(value)
+                    $("##{value.svc_tag}-load").click(->
+                        loaded = new App('#app')
+                        loaded.render()
+                        load_values(all_ids, value)
+                        )
+                    $("[id='#{value.svc_tag}-del']").click(->
+                        localforage.removeItem(value.svc_tag, (->
+                            reload = new App('#app')
+                            reload.render()
+                            ))
+                        )
+                    ))
             )
-        for item in items
-            localforage.getItem(item, ((err, value) ->
-                values.push value
-                ))
-        for val in values
-            $('#saved_notes').append template.saveNote(val)
-            console.log val
+
 
 class App
     constructor: (@el) ->
@@ -150,7 +155,8 @@ class App
     
     newNote: (toClear) ->
         $('#new_note').click(->
-            clear_values(toClear)
+            reload = new App('#app')
+            reload.render()
             )
     
     viewNotes: ->

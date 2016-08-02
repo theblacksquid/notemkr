@@ -170,6 +170,8 @@ template.conclusions = ->
     Conclusions: <br />
         <textarea id='conclusions' placeholder='How was the issue resolved?/5 GL' style='width:100%;height:100px;resize:none' />
         <br />
+        <input type='checkbox' id='esupport'> Educate about eSupport and self-help options?
+        <br />
         <input type='checkbox' id='heatcheck'> Did heatcheck with cx?
         <br />
             <input type='radio' name='cx_sat' id='hc_rad1' value='Cx is Satisfied' disabled> Cx is Satisfied
@@ -186,6 +188,7 @@ template.conclusions = ->
 
 template.conclusions.ids = [
     'conclusions'
+    'esupport'
     'heatcheck'
     'hc_rad1'
     'hc_rad2'
@@ -318,8 +321,10 @@ template.note = (input) ->
 
 template.savedNote = (input) ->
     """
-    <div class='w3-container w3-rest #{main_sz} w3-hover-light-grey' id= #{input.svc_tag}>
-    #{input.svc_tag}, #{input.caller_name}
+    <div class='w3-container w3-border w3-rest #{main_sz}' id= #{input.svc_tag}>
+    #{input.svc_tag}, #{input.caller_name} 
+    <button id='#{input.svc_tag}-del' class='w3-btn w3-border w3-hover-light-grey w3-right'>Delete</button>
+    <button id='#{input.svc_tag}-load' class='w3-btn w3-border w3-hover-light-grey w3-right'>Load</button>
     </div>
     """
     
