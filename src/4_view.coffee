@@ -61,17 +61,34 @@ class Main
                 $(target).prop('disabled', true)
             )
 
+class SavedNotes
+    constructor: (@el) ->
+    
+    template: ->
+        """
+        <div id='saved_notes'></div>
+        """
+    
+    render: ->
+        $(@el).html @template()
+        items = []
+        values = []
+        localforage.keys((err, keys) ->
+            for key in keys
+                items.push key
+            )
+        for item in items
+            localforage.getItem(item, ((err, value) ->
+                values.push value
+                ))
+        for val in values
+            $('#saved_notes').append template.saveNote(val)
+            console.log val
+
 class App
     constructor: (@el) ->
     
     render: ->
-        all_ids = template.callInfo.ids.concat(
-            template.cxInfo.ids
-            template.notes.ids
-            template.diagResults.ids
-            template.conclusions.ids
-            template.dispatchNotes.ids
-            )
         main = new Main("#main")
         sidebar = new Sidebar("#clocks-many")
         main_clocks = [
@@ -92,6 +109,7 @@ class App
         @getField('#symptoms', '#symptoms_btn')
         @saveNote(all_ids)
         @newNote(all_ids)
+        @viewNotes()
     
     getValues: (section, button) ->
         $(button).click(->
@@ -134,3 +152,10 @@ class App
         $('#new_note').click(->
             clear_values(toClear)
             )
+    
+    viewNotes: ->
+        $('#view_all_notes').click(->
+            saved = new SavedNotes("#main")
+            saved.render()
+            )
+    

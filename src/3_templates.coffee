@@ -316,4 +316,17 @@ template.note = (input) ->
     Note Generated on #{days[time.day]}, #{months[time.month]} #{time.date} #{time.year}, #{catZero(time.hours)}:#{catZero(time.minutes)}:#{catZero(time.seconds)} #{time.diem}, Manila
     """
 
-
+template.savedNote = (input) ->
+    """
+    <div class='w3-container w3-rest #{main_sz} w3-hover-light-grey' id= #{input.svc_tag}>
+    #{input.svc_tag}, #{input.caller_name}
+    </div>
+    """
+    
+all_ids = template.callInfo.ids.concat(
+    template.cxInfo.ids
+    template.notes.ids
+    template.diagResults.ids
+    template.conclusions.ids
+    template.dispatchNotes.ids
+    )

@@ -54,6 +54,18 @@ clear_values = (id_list) ->
             $(target).prop('checked', false)
         if $(target).is('select')
             $(target).prop('selectedIndex', 0)
+            
+load_values = (id_list, input) ->
+    for id in id_list
+        target = '#'+id
+        if $(target).is('input:text') or $(target).is('textarea')
+            $(target).val(input[id])
+        if $(target).is('input:checkbox')
+            $(target).prop('checked', input[id])
+        if $(target).is("input[type='radio']:checked")
+            $(target).prop('checked', input[id])
+        if $(target).is('select')
+            $(target).prop('selectedIndex', input[id])
 
 getType = (obj) ->
     if obj is null
