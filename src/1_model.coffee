@@ -65,7 +65,7 @@ load_values = (id_list, input) ->
         if $(target).is("input[type='radio']")
             $(target).prop('checked', input[id])
         if $(target).is('select')
-            $(target).prop('selectedIndex', input[id])
+            $(target).val(input[id])
 
 getType = (obj) ->
     if obj is null

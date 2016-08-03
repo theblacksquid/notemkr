@@ -137,9 +137,9 @@ template.diagResults = ->
             <input type='text' id='diag_tool' placeholder='Diagnostics Used' style='width: #{input_w}'>
             Result:    
             <select id='diag_result'>
-                <option value='neither'>N/A</option>
-                <option value='pass'>Pass</option>
-                <option value='fail'>Fail</option>
+                <option>N/A</option>
+                <option>Pass</option>
+                <option>Fail</option>
             </select>
         </div>
         <br />
@@ -204,20 +204,20 @@ template.dispatchNotes = ->
         <input type='checkbox' id='adv_data_loss'> Reminded cx of possible Data loss when unit is sent in for repairs or when OSRI/Reset is done?
         <br />
         <select id='adv_data_loss_val' disabled>
-            <option value='n/a'>--SELECT--</option>
-            <option value='yes'>Cx agrees to reimage drive</option>
-            <option value='no'>Cx doesn&#39;t agree to reimage drive</option>
+            <option>--SELECT--</option>
+            <option>Cx agrees to reimage drive</option>
+            <option>Cx doesn&#39;t agree to reimage drive</option>
         </select>
         <br />
         <input type='checkbox' id='auto_selector_used'> Auto Parts Selector Used?
         <input type='checkbox' id='vdi'> Verify Dispatch Information? <br />
         <input type='checkbox' id='tat'> Turn Around Time
         <select id='tat_val' disabled>
-            <option value='n/a'>--SELECT--</option>
-            <option value='1-2bd'>1 - 2 bd</option>
-            <option value='5-7bd'>5 - 7 bd</option>
-            <option value='7-10bd'>7 - 10 bd</option>
-            <option value='10-15bd'>10 - 15 bd</option>
+            <option>--SELECT--</option>
+            <option>1 - 2 bd</option>
+            <option>5 - 7 bd</option>
+            <option>7 - 10 bd</option>
+            <option>10 - 15 bd</option>
         </select> <br />
         <input type='checkbox' id='tarp'> Told About Return policy?
         <input type='checkbox' id='cidar'> CIDAR Explained?

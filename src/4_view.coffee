@@ -173,6 +173,6 @@ class App
             ).keyup((e) ->
                 if keys[17] and keys[83]
                     $('#save_note').click()
-                keys[e.keyCode] = false
-                keys[17] = false
+                delete keys[e.keyCode]
+                delete keys[17]
                 )
