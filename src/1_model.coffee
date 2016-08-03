@@ -62,7 +62,7 @@ load_values = (id_list, input) ->
             $(target).val(input[id])
         if $(target).is('input:checkbox')
             $(target).prop('checked', input[id])
-        if $(target).is("input[type='radio']:checked")
+        if $(target).is("input[type='radio']")
             $(target).prop('checked', input[id])
         if $(target).is('select')
             $(target).prop('selectedIndex', input[id])
@@ -93,5 +93,14 @@ days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
 months = ["Jan","Feb","Mar","Apr","May","Jun",
           "Jul","Aug","Sep","Oct","Nov","Dec"]
 
+arr_eq = (arr1, arr2) ->
+    i = 0
+    if arr1.length isnt arr2.length
+        return false
+    else
+        while arr1.length > i
+            if arr1[i] isnt arr2[i]
+                return false
+    true
 
 

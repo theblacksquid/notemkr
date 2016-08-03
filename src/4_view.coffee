@@ -71,22 +71,23 @@ class SavedNotes
     
     render: ->
         $(@el).html @template()
+        renderItem = (err, value) ->
+            $('#saved_notes').append template.savedNote(value)
+            $("##{value.svc_tag}-load").click(->
+                loaded = new App('#app')
+                loaded.render()
+                load_values(all_ids, value)
+                console.log value
+                )
+            $("[id='#{value.svc_tag}-del']").click(->
+                localforage.removeItem(value.svc_tag, (->
+                    reload = new App('#app')
+                    reload.render()
+                    ))
+                )
         localforage.keys((err, keys) ->
             for key in keys
-                localforage.getItem(key, ((err, value) ->
-                    $('#saved_notes').append template.savedNote(value)
-                    $("##{value.svc_tag}-load").click(->
-                        loaded = new App('#app')
-                        loaded.render()
-                        load_values(all_ids, value)
-                        )
-                    $("[id='#{value.svc_tag}-del']").click(->
-                        localforage.removeItem(value.svc_tag, (->
-                            reload = new App('#app')
-                            reload.render()
-                            ))
-                        )
-                    ))
+                localforage.getItem(key, renderItem)
             )
 
 
@@ -115,6 +116,7 @@ class App
         @saveNote(all_ids)
         @newNote(all_ids)
         @viewNotes()
+        @kbShortcut()
     
     getValues: (section, button) ->
         $(button).click(->
@@ -132,8 +134,7 @@ class App
             
     getField: (field, button) ->
         $(button).click(->
-            $(field).select()
-            document.execCommand('copy')
+            clipboard.copy($(field).val())
             )
     
     saveNote: (input) ->
@@ -165,3 +166,13 @@ class App
             saved.render()
             )
     
+    kbShortcut: ->
+        keys = {}
+        $(document).keydown((e) ->
+            keys[e.keyCode] = true
+            ).keyup((e) ->
+                if keys[17] and keys[83]
+                    $('#save_note').click()
+                keys[e.keyCode] = false
+                keys[17] = false
+                )
