@@ -92,6 +92,23 @@ class SavedNotes
                 localforage.getItem(key, renderItem)
             )
 
+class Import
+    constructor: (@el) ->
+    
+    render: ->
+        $(@el).html template.JSONscreen()
+        localforage.keys((err, keys) ->
+            result = []
+            for key in keys
+                localforage.getItem(key, ((err, value) ->
+                    result.push JSON.stringify(value)
+                    $('#json_here').val(result)
+                    ))
+            )
+        
+    importPress: ->
+        $('#import').click(->
+            )
 
 class App
     constructor: (@el) ->
@@ -118,6 +135,7 @@ class App
         @saveNote(all_ids)
         @newNote(all_ids)
         @viewNotes()
+        @importBtn()
         #@kbShortcut()
     
     getValues: (section, button) ->
@@ -143,7 +161,7 @@ class App
         $('#save_note').click(->
             time = render_time(0)
             toSave = extract_values(input)
-            if toSave.svc_tag isnt ''
+            if toSave.svc_tag isnt '' or undefined
                 localforage.setItem(
                     toSave.svc_tag
                     toSave,
@@ -166,6 +184,12 @@ class App
         $('#view_all_notes').click(->
             saved = new SavedNotes("#main")
             saved.render()
+            )
+    
+    importBtn: ->
+        $('#more_options').click(->
+            impt = new Import('#main')
+            impt.render()
             )
     
     kbShortcut: ->

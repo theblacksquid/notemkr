@@ -335,3 +335,18 @@ all_ids = template.callInfo.ids.concat(
     template.conclusions.ids
     template.dispatchNotes.ids
     )
+
+template.JSONscreen = ->
+    """
+    <div class='w3-container w3-border w3-rest'>
+        <p>WARNING: Do not change the contents of the textarea below 
+        if you don't know what you are doing</p>
+        <p>Below are the saved notes in JSON format that coul be used
+        to export notes between Notemkr instances.</p>
+        <p>You can add another JSON object to the end of the area
+        to manually add another note to the note storage.</p>
+            <textarea id='json_here' style='width:100%;height:60vh;resize:none' />
+        <br />
+        <button id='import' class='w3-btn w3-border w3-hover-light-grey'>Import</button>
+    </div>
+    """
