@@ -83,6 +83,8 @@ class SavedNotes
                 localforage.removeItem(value.svc_tag, (->
                     reload = new App('#app')
                     reload.render()
+                    saved = new SavedNotes('#main')
+                    saved.render()
                     ))
                 )
         localforage.keys((err, keys) ->
@@ -116,7 +118,7 @@ class App
         @saveNote(all_ids)
         @newNote(all_ids)
         @viewNotes()
-        @kbShortcut()
+        #@kbShortcut()
     
     getValues: (section, button) ->
         $(button).click(->
