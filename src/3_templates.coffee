@@ -344,7 +344,9 @@ template.JSONscreen = ->
         <p>Below are the saved notes in JSON format that coul be used
         to export notes between Notemkr instances.</p>
         <p>You can add another JSON object to the end of the area
-        to manually add another note to the note storage.</p>
+        to manually add another note to the note storage. Make sure 
+        that the old values and the new ones are separated by a 
+        comma ",".</p>
             <textarea id='json_here' style='width:100%;height:60vh;resize:none' />
         <br />
         <button id='import' class='w3-btn w3-border w3-hover-light-grey'>Import</button>

@@ -105,9 +105,14 @@ class Import
                     $('#json_here').val(result)
                     ))
             )
+        @importPress()
         
     importPress: ->
         $('#import').click(->
+            blobs = JSON.parse("[ #{$('#json_here').val()} ]")
+            for blob in blobs
+                localforage.setItem(blob.svc_tag, blob)
+            alert('Records saved successfully')
             )
 
 class App
